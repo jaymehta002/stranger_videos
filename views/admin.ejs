@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .admin-panel {
+            margin: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 20px;
+        }
+
+        .member-details {
+            margin-top: 20px;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+
+        .delete-btn {
+            color: red;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="admin-panel">
+        <h2>Welcome to the Admin Panel</h2>
+        <p>Here, you can manage various administrative tasks and functionalities.</p>
+
+        <div class="member-details">
+            <h3>Registered Members:</h3>
+            <ul>
+                <% members.forEach(member => { %>
+                    <li>
+                        Name: <%= member.username %>, Email: <%= member.email %>
+                        <span class="delete-btn" onclick="deleteUser('<%= member._id %>')">Delete</span>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
+        <div class="video-details">
+            <h3>Videos</h3>
+            <ul>
+                <% videos.forEach(vid => { %>
+                    <li>
+                        id: <%= vid._id %>, title: <%= vid.title %>
+                        <span class="delete-btn" onclick="deleteUser('<%= vid._id %>')">Delete</span>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function deleteUser(userId) {
+            fetch('/deleteUser/' + userId, {
+                method: 'DELETE'
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                location.reload(); // Reload the page after deletion
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+        function deleteUser(videoId) {
+            fetch('/deleteVideo/' + videoId, {
+                method: 'DELETE'
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                location.reload(); // Reload the page after deletion
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</body>
+
+</html>

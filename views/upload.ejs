@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Sharing Platform</title>
+    <link rel="stylesheet" href="upload.css">
+</head>
+<body>
+    <div class="container-mid">
+        <div class="left-container">
+            <h1>Welcome to the Video Sharing Platform!</h1>
+            <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
+                <input type="text" name="title" placeholder="Title"><br><br>
+                <input type="text" name="description" placeholder="Description"><br><br>
+                <input type="file" name="video"><br><br>
+                <input type="submit" value="Upload Video">
+            </form>
+        </div>
+    </div>
+        
+</body>
+</html>

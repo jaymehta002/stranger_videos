@@ -1,0 +1,136 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Sharing Platform</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Video Sharing Platform!</h1>
+        <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
+            <input type="text" name="title" placeholder="Title"><br><br>
+            <input type="text" name="description" placeholder="Description"><br><br>
+            <input type="file" name="video"><br><br>
+            <input type="submit" value="Upload Video">
+        </form>
+        <h2>Uploaded Videos</h2>
+        <div id="videos"></div>
+    </div>
+
+    <script>
+        fetch('/videos')
+            .then(response => response.json())
+            .then(data => {
+                const videosElement = document.getElementById('videos');
+    
+                data.forEach(video => {
+                    const card = document.createElement('div');
+                    card.classList.add('card');
+    
+                    const videoElement = document.createElement('video');
+                    videoElement.src = '/' + video.videoUrl; // Adjust the path here
+                    videoElement.controls = true;
+                    videoElement.classList.add('video');
+    
+                    const cardBody = document.createElement('div');
+                    cardBody.classList.add('card-body');
+    
+                    const vidTitle = document.createElement('h3');
+                    vidTitle.textContent = video.title;
+    
+                    const vidDescription = document.createElement('p');
+                    vidDescription.textContent = video.description;
+    
+                    card.appendChild(videoElement);
+                    card.appendChild(vidTitle);
+                    card.appendChild(vidDescription);
+    
+                    videosElement.appendChild(card);
+                });
+    
+                // Pop-up for successful video upload
+                const popUp = document.createElement('div');
+                popUp.classList.add('popup');
+                popUp.textContent = 'Video uploaded successfully!';
+                document.body.appendChild(popUp);
+                // Remove pop-up after 3 seconds
+                setTimeout(() => {
+                    document.body.removeChild(popUp);
+                }, 2000);
+            })
+            .catch(error => console.error('Error:', error));
+    </script>
+    
+    </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Sharing Platform</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="left-container">
+            <h1>Welcome to the Video Sharing Platform!</h1>
+            <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
+                <input type="text" name="title" placeholder="Title"><br><br>
+                <input type="text" name="description" placeholder="Description"><br><br>
+                <input type="file" name="video"><br><br>
+                <input type="submit" value="Upload Video">
+            </form>
+        </div>
+        <div class="right-container" id="videos"></div>
+    </div>
+
+    <script>
+        fetch('/videos')
+            .then(response => response.json())
+            .then(data => {
+                const videosElement = document.getElementById('videos');
+    
+                data.forEach(video => {
+                    const card = document.createElement('div');
+                    card.classList.add('card');
+    
+                    const videoElement = document.createElement('video');
+                    videoElement.src = '/' + video.videoUrl; // Adjust the path here
+                    videoElement.controls = true;
+                    videoElement.classList.add('video');
+    
+                    const cardBody = document.createElement('div');
+                    cardBody.classList.add('card-body');
+    
+                    const vidTitle = document.createElement('h3');
+                    vidTitle.textContent = video.title;
+    
+                    const vidDescription = document.createElement('p');
+                    vidDescription.textContent = video.description;
+    
+                    card.appendChild(videoElement);
+                    card.appendChild(vidTitle);
+                    card.appendChild(vidDescription);
+    
+                    videosElement.appendChild(card);
+                });
+    
+                // Pop-up for successful video upload
+                const popUp = document.createElement('div');
+                popUp.classList.add('popup');
+                popUp.textContent = 'Video uploaded successfully!';
+                document.body.appendChild(popUp);
+                // Remove pop-up after 3 seconds
+                setTimeout(() => {
+                    document.body.removeChild(popUp);
+                }, 2000);
+            })
+            .catch(error => console.error('Error:', error));
+    </script>
+</body>
+</html>
